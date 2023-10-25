@@ -102,3 +102,5 @@ const createDescriptiveObject = () => ({
 });
 
 const descriptionArray = Array.from({length: 25}, createDescriptiveObject);
+
+console.log(descriptionArray);
