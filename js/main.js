@@ -22,7 +22,7 @@ const PHOTO_DESCRIPTION_LIST = [
   'превосходно',
   'искусно',
   'изящно',
-]
+];
 
 //список комментариев к фото
 const LIST_OF_COMMENTS = [
@@ -49,57 +49,56 @@ const getRandomInteger = (a, b) => {
 const getRandomArrayElement = (elements) => elements[getRandomInteger(0, elements.length - 1)];
 
 //вернет случайный, уникальный ID
-let photoId = [0];
+const photoId = [0];
+
 const getRandomUniquePhotoId = (a, b) => {
   let randomIntegerID = getRandomInteger(a, b);
   while (photoId.includes(randomIntegerID)) {
-    randomIntegerID = getRandomInteger(a, b);
+    randomIntegerID = getRandomInteger(a, b)
   };
   photoId.push(randomIntegerID);
   return randomIntegerID;
 };
 
 //вернет случайный, уникальный номер для адреса фото
-let urlNums = [0];
+const urlNums = [0];
+
 const getRandomUniqueUrlNums = (a, b) => {
   let randomIntegerNum = getRandomInteger(a, b);
   while (urlNums.includes(randomIntegerNum)) {
-    randomIntegerNum = getRandomInteger(a, b);
+    randomIntegerNum = getRandomInteger(a, b)
   };
   urlNums.push(randomIntegerNum);
   return randomIntegerNum;
 };
 
 //вернет случайный, уникальный ID комментария
-let commentId = [0];
+const commentId = [0];
+
 const getRandomUniqueCommentId = (a, b) => {
   let randomIntegerId = getRandomInteger(a, b);
   while (commentId.includes(randomIntegerId)) {
-    randomIntegerId = getRandomInteger(a, b);
+    randomIntegerId = getRandomInteger(a, b)
   };
   commentId.push(randomIntegerId);
   return randomIntegerId;
 };
 
 //создаст объект для массива с комментариями к фото
-const createCommentedObject = () => {
-  return {
-    id: getRandomUniqueCommentId(1,999),
-    avatar: `img/avatar-${getRandomInteger(1, 6)}.svg`,
-    message: getRandomArrayElement(LIST_OF_COMMENTS),
-    name: getRandomArrayElement(LIST_OF_NAMES),
-  };
-};
+const createCommentedObject = () => ({
+  id: getRandomUniqueCommentId(1,999),
+  avatar: `img/avatar-${getRandomInteger(1, 6)}.svg`,
+  message: getRandomArrayElement(LIST_OF_COMMENTS),
+  name: getRandomArrayElement(LIST_OF_NAMES),
+});
 
 //создаст объект для массива с описанием фото
-const  createDescriptiveObject = () => {
-  return {
-    id: getRandomUniquePhotoId(1, 25),
-    url: `photos/${getRandomUniqueUrlNums(1, 25)}.jpg`,
-    description: getRandomArrayElement(PHOTO_DESCRIPTION_LIST),
-    likes: getRandomInteger(15, 200),
-    comments: Array.from({length: getRandomInteger(0, 30)}, createCommentedObject),
-  };
-};
-let descriptionArray;
+const  createDescriptiveObject = () => ({
+  id: getRandomUniquePhotoId(1, 25),
+  url: `photos/${getRandomUniqueUrlNums(1, 25)}.jpg`,
+  description: getRandomArrayElement(PHOTO_DESCRIPTION_LIST),
+  likes: getRandomInteger(15, 200),
+  comments: Array.from({length: getRandomInteger(0, 30)}, createCommentedObject),
+});
+
 descriptionArray = Array.from({length: 25}, createDescriptiveObject);
