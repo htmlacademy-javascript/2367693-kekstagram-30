@@ -54,8 +54,8 @@ const photoId = [0];
 const getRandomUniquePhotoId = (a, b) => {
   let randomIntegerID = getRandomInteger(a, b);
   while (photoId.includes(randomIntegerID)) {
-    randomIntegerID = getRandomInteger(a, b)
-  };
+    randomIntegerID = getRandomInteger(a, b);
+  }
   photoId.push(randomIntegerID);
   return randomIntegerID;
 };
@@ -66,8 +66,8 @@ const urlNums = [0];
 const getRandomUniqueUrlNums = (a, b) => {
   let randomIntegerNum = getRandomInteger(a, b);
   while (urlNums.includes(randomIntegerNum)) {
-    randomIntegerNum = getRandomInteger(a, b)
-  };
+    randomIntegerNum = getRandomInteger(a, b);
+  }
   urlNums.push(randomIntegerNum);
   return randomIntegerNum;
 };
@@ -78,8 +78,8 @@ const commentId = [0];
 const getRandomUniqueCommentId = (a, b) => {
   let randomIntegerId = getRandomInteger(a, b);
   while (commentId.includes(randomIntegerId)) {
-    randomIntegerId = getRandomInteger(a, b)
-  };
+    randomIntegerId = getRandomInteger(a, b);
+  }
   commentId.push(randomIntegerId);
   return randomIntegerId;
 };
@@ -93,7 +93,7 @@ const createCommentedObject = () => ({
 });
 
 //создаст объект для массива с описанием фото
-const  createDescriptiveObject = () => ({
+const createDescriptiveObject = () => ({
   id: getRandomUniquePhotoId(1, 25),
   url: `photos/${getRandomUniqueUrlNums(1, 25)}.jpg`,
   description: getRandomArrayElement(PHOTO_DESCRIPTION_LIST),
