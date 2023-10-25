@@ -101,6 +101,6 @@ const createDescriptiveObject = () => ({
   comments: Array.from({length: getRandomInteger(0, 30)}, createCommentedObject),
 });
 
-const descriptionArray = Array.from({length: 25}, createDescriptiveObject);
+const getDescriptionArray = () => Array.from({length: 25}, createDescriptiveObject);
 
-console.log(descriptionArray);
+getDescriptionArray();
