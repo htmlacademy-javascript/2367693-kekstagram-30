@@ -1,5 +1,3 @@
-import {createDescriptiveObject} from './data';
+import {renderPictures} from './render.js';
 
-const getDescriptionArray = () => Array.from({length: 25}, createDescriptiveObject);
-
-getDescriptionArray();
+renderPictures();
