@@ -92,4 +92,6 @@ const createDescriptiveObject = () => ({
   comments: Array.from({length: getRandomInteger(0, 30)}, createCommentedObject),
 });
 
-export {createDescriptiveObject};
+const getPhotosArray = () => Array.from({length: 25}, createDescriptiveObject);
+
+export {getPhotosArray};
