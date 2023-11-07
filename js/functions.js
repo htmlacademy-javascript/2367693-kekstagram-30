@@ -1,32 +1,19 @@
 
-// eslint-disable-next-line no-unused-vars
-function compareLengthString(stringValue, maxLingth) {
-  return stringValue.length <= maxLingth;
-}
-// Cтрока короче 20 символов
-// compareLengthString('проверяемая строка', 20);
-// true
-// Длина строки ровно 18 символов
-// compareLengthString('проверяемая строка', 18);
-// true
-// Строка длиннее 10 символов
-// compareLengthString('проверяемая строка', 10);
-// false
-// eslint-disable-next-line no-unused-vars
-function isPalindrom (rawString) {
-  const string = rawString.replaceAll(' ', '').toLowerCase();
-  let string1 = '';
-  for (let i = string.length - 1; i >= 0; i--){
-    string1 += string.at(i);
+const checkTimeTable = (dayStart, dayFinish, meetStart, meetDuration) => {
+  const parseTime = (timeStr) => {
+    timeStr = timeStr.split(':');
+    return parseInt(timeStr[0], 10) * 60 + parseInt(timeStr[1], 10);
+  };
+  dayStart = parseTime(dayStart);
+  dayFinish = parseTime(dayFinish);
+  meetStart = parseTime(meetStart);
+  meetDuration = parseInt(meetDuration, 10);
+  if (meetStart < dayStart || (meetStart + meetDuration) > dayFinish) {
+    return false;
   }
-  return string1 === string;
-}
+  return true;
+};
 
-//isPpalindrom ('топот')
-
-// Строка является палиндромом
-//isPalindrom('топот'); // true
-// Несмотря на разный регистр, тоже палиндром
-//isPalindrom('ДовОд'); // true
-// Это не палиндром
-//isPalindrom('Кекс');  // false
+checkTimeTable('08:00', '17:30', '14:00', 90); // true
+checkTimeTable('08:00', '14:30', '14:00', 90); // false
+checkTimeTable('8:0', '10:0', '8:0', 120); // true
